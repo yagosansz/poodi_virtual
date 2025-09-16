@@ -15,6 +15,34 @@ class Bottles
   end
 
   def quantity(number)
+    BottleNumber.new(number).quantity(number)
+  end
+
+  def container(number)
+    BottleNumber.new(number).container(number)
+  end
+
+  def action(number)
+    BottleNumber.new(number).action(number)
+  end
+
+  def pronoun(number)
+    BottleNumber.new(number).pronoun(number)
+  end
+
+  def successor(number)
+    BottleNumber.new(number).successor(number)
+  end
+end
+
+class BottleNumber
+  attr_reader :number
+
+   def initialize(number)
+     @number = number
+   end
+
+  def quantity(number)
     if number == 0
       "no more"
     else
@@ -25,9 +53,9 @@ class Bottles
   def container(number)
     if number == 1
       "bottle"
-     else
+    else
       "bottles"
-     end
+    end
   end
 
   def action(number)
@@ -52,5 +80,5 @@ class Bottles
     else
       number - 1
     end
-  end
+  end   
 end
