@@ -18,7 +18,6 @@ class Bottles
   end
 end
 
-
 class BottleNumber
   attr_reader :number
   
