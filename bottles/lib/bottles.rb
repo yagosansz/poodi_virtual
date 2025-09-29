@@ -17,7 +17,6 @@ class Bottles
   end
 end
 
-
 class BottleNumber
   attr_reader :number
   def initialize(number)
@@ -25,13 +24,14 @@ class BottleNumber
   end
 
   def self.for(number)
-    # return number if number.kind_of?(BottleNumber)
-
+    # return number if number.kind_of?(BottleNumber)    
     case number
     when 0
       BottleNumber0
     when 1
       BottleNumber1
+    when 6
+      BottleNumber6
     else
       BottleNumber
     end.new(number)
@@ -83,5 +83,15 @@ class BottleNumber1 < BottleNumber
 
   def pronoun
     "it"
+  end
+end
+
+class BottleNumber6 < BottleNumber
+  def quantity
+    "1"
+  end
+
+  def container
+    "six-pack"
   end
 end
