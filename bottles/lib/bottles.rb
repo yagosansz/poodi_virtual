@@ -1,3 +1,11 @@
+module ToBottleNumber
+  refine Integer do
+    def to_bottle_number
+      BottleNumber.for(self)
+    end
+  end
+end
+
 class Bottles
   def song
     verses(99, 0)
@@ -17,6 +25,7 @@ class Bottles
   end
 end
 
+using ToBottleNumber
 
 class BottleNumber
   def self.for(number)
@@ -56,7 +65,7 @@ class BottleNumber
   end
 
   def successor
-    BottleNumber.for(number - 1)
+   (number - 1).to_bottle_number
   end
 end
 
@@ -70,7 +79,7 @@ class BottleNumber0 < BottleNumber
   end
 
   def successor
-    BottleNumber.for(99)
+    99.to_bottle_number
   end
 end
 
