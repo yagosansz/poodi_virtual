@@ -8,18 +8,30 @@ class Bottles
   end
 
   def verse(number)
-    # if 99_bottles_song? 
-      bottle_number = BottleNumber.for(number)
+    BottleVerse.new(number).verse(number)
+    # bottle_number = BottleNumber.for(number)
 
-      "#{bottle_number} of beer on the wall, ".capitalize +
-      "#{bottle_number} of beer.\n" +
-      "#{bottle_number.action}, " +
-      "#{bottle_number.successor} of beer on the wall.\n"
-    # elsif verse_for_song_2?
-    #   "verse 2"
-    # elsif verse_for_song_3?
-    #   "verse 3"
-    # end
+    # "#{bottle_number} of beer on the wall, ".capitalize +
+    # "#{bottle_number} of beer.\n" +
+    # "#{bottle_number.action}, " +
+    # "#{bottle_number.successor} of beer on the wall.\n"
+  end
+end
+
+class BottleVerse
+  attr_reader :number
+
+  def initialize(number)
+    @number = number
+  end
+
+  def verse(number)
+    bottle_number = BottleNumber.for(number)
+
+    "#{bottle_number} of beer on the wall, ".capitalize +
+    "#{bottle_number} of beer.\n" +
+    "#{bottle_number.action}, " +
+    "#{bottle_number.successor} of beer on the wall.\n"
   end
 end
 
