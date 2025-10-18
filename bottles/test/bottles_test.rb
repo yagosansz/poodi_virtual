@@ -1,7 +1,33 @@
 require_relative '../../test_helper'
 require_relative '../lib/bottles'
 
+module VerseRoleTest
+  def test_plays_verse_role
+    assert_respond_to @role_player, :lyrics
+  end
+end
+
+class VerseFake  
+  def self.lyrics(number)
+    "This is verse #{number}.\n"
+  end
+end
+
+class VerseFakeTest < Minitest::Test
+  include VerseRoleTest
+
+  def setup
+    @role_player = VerseFake
+  end
+end
+
 class BottleVerseTest < Minitest::Test
+  include VerseRoleTest
+
+  def setup
+    @role_player = BottleVerse
+  end
+
   def test_the_first_verse
     expected = "99 bottles of beer on the wall, " +
       "99 bottles of beer.\n" +
@@ -41,12 +67,6 @@ class BottleVerseTest < Minitest::Test
       "99 bottles of beer on the wall.\n"
     assert_equal expected, BottleVerse.lyrics(0)
   end  
-end
-
-class VerseFake
-  def self.lyrics(number)
-    "This is verse #{number}.\n"
-  end
 end
 
 class CountdownSongTest < Minitest::Test
